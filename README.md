@@ -2,12 +2,39 @@
 
 > 因陀罗网是《华严经》中的宝珠之网：每颗宝珠映现所有其他宝珠，重重无尽。本项目借其名，以 three.js 让节点如珠、关系如映，织一张可旋转观测的立体关系之网。
 
-基于 three.js 的 3D 关系演示系统，以西游记全景为样本，深挖事件脉络、推演进程走向、预测未来图景，让复杂关系立体可见。
+基于 three.js 的 3D 关系演示系统家族中的**关系 / 因果**视角：以西游记事件为样本，深挖节点之间的关联、因果与影响传播。
+
+## 定位：关系 / 因果（看联系）
+
+本系统独立功能：
+
+- **力导向图网络**：节点 = 宝珠，边 = 映照关系。
+- **互映高亮**：选中一珠，点亮所有与它互映的珠。
+- **事件深挖**：多跳路径、因果链、关联子图展开。
+- **影响涟漪**：一个事件波及范围的扩散动画。
+- **边类型过滤**：师徒 / 敌对 / 因果 / 归属 等关系类型。
+
+数据切面：`edges` 的关系类型 / 权重 / 路径。
+明确不做：球面全景总览（归 [浑天仪](https://github.com/huntian2028/huntianyi)）、时间推演与预测（归 [推背图](https://github.com/huntian2028/tuibeitu)）。
+
+## 家族架构：薄核心 + 三独立应用
+
+三套系统各占一个正交维度，共用一个薄核心，功能互不重叠：
+
+| 系统 | 维度 | 定位 |
+|---|---|---|
+| [浑天仪 Huntianyi](https://github.com/huntian2028/huntianyi) | 空间 / 结构 | 看全局 |
+| **因陀罗网 IndraNet** | 关系 / 因果 | 看联系 |
+| [推背图 TuiBeitu](https://github.com/huntian2028/tuibeitu) | 时间 / 演进 | 看变化 |
+
+- **relation-core（薄核心，独立包）**：只含渲染 bootstrap（scene / camera / controls / 渲染循环 / 拾取）、数据 schema 与校验、数据加载器；**不含任何业务布局与功能**。
+- 依赖单向：app → core；app 之间不互相 import。
+- 统一数据 schema：`nodes`（结构）/ `edges`（关系）/ `events`（时间序列），各 app 只消费自己的切面。
 
 ## 相关项目
 
-- [浑天仪 Huntianyi](https://github.com/huntian2028/huntianyi)
-- [推背图 TuiBeitu](https://github.com/huntian2028/tuibeitu)
+- [浑天仪 Huntianyi](https://github.com/huntian2028/huntianyi) — 空间 / 结构
+- [推背图 TuiBeitu](https://github.com/huntian2028/tuibeitu) — 时间 / 演进
 
 ## 许可证
 
